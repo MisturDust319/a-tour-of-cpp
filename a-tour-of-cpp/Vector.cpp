@@ -2,9 +2,10 @@
 
 // a class is a basically handle that holds a pointer to the attributes and methods
 class Vector {
+	// this is a concrete class. It behaves just like a built in data type
 public:
 	// constructor w/ shorthand initialization
-	// this is called a member initialization list
+	//	this is called a member initialization list
 	Vector(int s) :elem(new double[s]), sz(s) {}
 	// overwrite the element access operator
 	//	so it uses the standard array interface for access
@@ -19,7 +20,7 @@ double read_and_sum(int s) {
 	// read s ints from cin and return their sum
 	Vector v(s); // init a Vector of size s
 	for (int i = 0; i != v.size(); ++i)
-		cin >> v[i];
+		std::cin >> v[i];
 
 	double sum = 0;
 	for (int i = 0; i != s; ++i)

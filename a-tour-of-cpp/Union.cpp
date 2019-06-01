@@ -5,6 +5,8 @@
 // as such, open use of unions is discouraged, but
 //	they can work well when encapsulated
 
+#include <iostream>
+
 enum Type { str, num };
 
 // this can hold a strong OR an int
@@ -31,8 +33,8 @@ void f(Entry* p) {
 	// note how you have to figure out a way to specifically address
 	// the data type you want
 	if (p->t == str)
-		cout << p->v.s;
+		std::cout << p->v.s;
 	else
-		cout << p->v.i;
+		std::cout << p->v.i;
 }
 
