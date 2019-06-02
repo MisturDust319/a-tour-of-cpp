@@ -24,5 +24,13 @@
     <ClCompile Include="Union.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Enumerations.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="declaration_v_implementation.cpp">
+      <Filter>Source Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
