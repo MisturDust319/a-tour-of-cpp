@@ -1,5 +1,13 @@
+#include "Vector.h" // include the vector header
+// quotes indicate it should look in the local directory
 #include <iostream>
+// brackets indicate it should look in the project path
 
+// This is contains the implementation of the Vector class declared in Vector.h
+// By seperating declaration from implementation, you can decrease compile time and errors
+//	and helps keep code organised
+
+/*
 // a class is a basically handle that holds a pointer to the attributes and methods
 class Vector {
 	// this is a concrete class. It behaves just like a built in data type
@@ -15,6 +23,23 @@ private:
 	double* elem; // pointer to elements
 	int sz;	// size of the vector
 };
+*/
+
+// you have to declare the scope of the class when implementing
+//	a class's methods
+Vector::Vector(int s)
+	:elem{ new double[s] }, sz{ s }
+{
+}
+
+// the return type is put before the scope resolution
+double& Vector::operator[](int i) {
+	return elem[i];
+}
+
+int Vector::size() {
+	return sz;
+}
 
 double read_and_sum(int s) {
 	// read s ints from cin and return their sum
