@@ -1,6 +1,8 @@
 // Vector.h
 // this is a header file, which contains declarations for the Vector class
 
+#pragma once
+
 class Vector {
 public:
 	Vector(int s);

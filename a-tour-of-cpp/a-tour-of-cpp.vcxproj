@@ -117,6 +117,7 @@
   <ItemGroup>
     <ClCompile Include="Enumerations.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Namespaces.cpp" />
     <ClCompile Include="Union.cpp" />
     <ClCompile Include="Vector.cpp" />
   </ItemGroup>

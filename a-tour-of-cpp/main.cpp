@@ -1,5 +1,7 @@
 #include <iostream>
-#include "Vector.cpp"
+#include "Vector.h"
+// to include code who's implementation and definition are seperate,
+//	include the header
 
 using namespace std;
 

@@ -27,6 +27,9 @@
     <ClCompile Include="Enumerations.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Namespaces.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="declaration_v_implementation.cpp">
