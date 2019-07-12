@@ -33,8 +33,17 @@ Vector::Vector(int s)
 }
 
 // the return type is put before the scope resolution
-double& Vector::operator[](int i) {
-	return elem[i];
+double& Vector::operator[] (int i) {
+	if (i < 0 || size() <= i)
+		throw std::out_of_range{ "Vector::operator[]" };
+	// throw will return an error
+	// it passes control to a handler
+	// this handler unwinds the call stack to get the context
+	// of the caller
+	// this will exit scopes and functions as needed to get
+	// a caller that will handle the exception
+	else
+		return elem[i];
 }
 
 int Vector::size() {
