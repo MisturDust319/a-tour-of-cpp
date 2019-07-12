@@ -116,6 +116,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Enumerations.cpp" />
+    <ClCompile Include="Exceptions.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Namespaces.cpp" />
     <ClCompile Include="Union.cpp" />
