@@ -4,7 +4,7 @@
 double& Vector::operator[] (int i) {
 	if (i < 0 || size() <= i)
 		throw std::out_of_range{ "Vector::operator[]" };
-		// throw will return an error
+		// throw will return an error at run time
 		// it passes control to a handler
 		// this handler unwinds the call stack to get the context
 		// of the caller
@@ -30,4 +30,10 @@ void f(Vector& v) {
 void user(int sz) noexcept {
 	Vector v(sz);
 	// ...
+	// if this still throws, the standard library function terminate() calls
 }
+
+// static assert can be used to check errors at compile time 
+static_assert(4 <= sizeof(int), "int size too small");
+// arg 1 is a conditions that prints the message if the condition is true
+// and gives a compile time error

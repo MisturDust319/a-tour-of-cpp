@@ -28,8 +28,10 @@ private:
 // you have to declare the scope of the class when implementing
 //	a class's methods
 Vector::Vector(int s)
-	:elem{ new double[s] }, sz{ s }
 {
+	if (s < 0)
+		throw std::length_error{"Vector size must be a positive int"};
+	elem = new double[s];
 }
 
 // the return type is put before the scope resolution
@@ -44,6 +46,10 @@ double& Vector::operator[] (int i) {
 	// a caller that will handle the exception
 	else
 		return elem[i];
+	// in the current implementation assumes that elem points
+	//	to an array of size sz filled w/ doubles
+	// the class invariant states what is assumed to be true
+	//	the class constructor should establish the class's invariant
 }
 
 int Vector::size() {
