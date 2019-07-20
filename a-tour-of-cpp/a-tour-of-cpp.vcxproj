@@ -115,6 +115,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Class.cpp" />
     <ClCompile Include="Enumerations.cpp" />
     <ClCompile Include="Exceptions.cpp" />
     <ClCompile Include="main.cpp" />
