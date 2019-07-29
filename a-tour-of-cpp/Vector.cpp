@@ -27,11 +27,30 @@ private:
 
 // you have to declare the scope of the class when implementing
 //	a class's methods
+Vector::Vector() : sz{ 1 }, elem{ new double[1] } {}
+
 Vector::Vector(int s)
 {
 	if (s < 0)
 		throw std::length_error{"Vector size must be a positive int"};
 	elem = new double[s];
+	for (int i = 0; i != s; ++i)
+		elem[i] = 0; // init all elements to 0
+}
+
+// constructor w/ init list
+Vector::Vector(std::initializer_list<double> list) 
+	:elem{ new double[list.size()] }, sz{ static_cast<int>(list.size()) }
+{
+	// note the static cast, which makes what data type list.size() explicit
+	// these should be used rarely in high level applications
+	std::copy(list.begin(), list.end(), elem);
+}
+
+// destructor
+Vector::~Vector() {
+	delete[] elem;
+	// delete the 
 }
 
 // the return type is put before the scope resolution
@@ -52,8 +71,12 @@ double& Vector::operator[] (int i) {
 	//	the class constructor should establish the class's invariant
 }
 
-int Vector::size() {
+int Vector::size() const {
 	return sz;
+}
+
+double& Vector::operator[](int i) {
+	return elem[i];
 }
 
 double read_and_sum(int s) {
@@ -67,6 +90,13 @@ double read_and_sum(int s) {
 		sum += v[i];
 
 	return sum;
+}
+
+Vector Vector::read(std::istream& is) {
+	Vector v;
+	for (double d; is >> d;)
+		v.push_back();
+	return v;
 }
 
 /* VECTOR AS A STRUCTURE
