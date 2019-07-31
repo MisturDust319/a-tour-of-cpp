@@ -46,5 +46,15 @@ void use(Container& c) {
 
 	for (int i = 0; i != sz; ++i) {
 		std::cout << c[i] << std::endl;
+		// for virtual functions like this operator overload,
+		// the compiler converts the virtual function name to an index
+		// for a table of pointers to functions
+		//	called a virtual function table (vtbl)
+		// each class w/ virtual functions has a vtbl
+		//	with each super class's implementation acting as an index
+		// calling these functions is nearly as efficient
+		//	as normal function calls
+		// this requires one pointer and one vtbl for each class
+		//	with virtual functions
 	}
 }
