@@ -39,6 +39,9 @@
     <ClCompile Include="Abstract_Types.h">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Class_Hierachies.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="declaration_v_implementation.cpp">

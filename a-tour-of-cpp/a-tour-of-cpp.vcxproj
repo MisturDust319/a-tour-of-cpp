@@ -117,6 +117,7 @@
   <ItemGroup>
     <ClCompile Include="Abstract_Types.h" />
     <ClCompile Include="Class.cpp" />
+    <ClCompile Include="Class_Hierachies.cpp" />
     <ClCompile Include="Enumerations.cpp" />
     <ClCompile Include="Exceptions.cpp" />
     <ClCompile Include="main.cpp" />
