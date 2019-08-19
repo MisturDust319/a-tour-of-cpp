@@ -91,12 +91,13 @@ void Smiley::draw() const {
 
 enum class Kind { circle, triangle, smiley };
 
+/*
 Shape* read_shape(std::istream& is) {
 	// read shape descriptions from istream
 
 	// here you would read is somehow into k
-
-	switch (Kind k) {
+	Kind k;
+	switch (k) {
 		// read circle data into p and r
 	case Kind::circle:
 		return new Circle{ p, r };
@@ -111,23 +112,69 @@ Shape* read_shape(std::istream& is) {
 		return ps;
 	}
 }
+*/
+// note that allocating data from free store is dangerous
+// you can choose to allocate pointers to a unique_ptr from the std lib
+// unique_ptr will handle garbage collection
+std::unique_ptr<Shape> read_shape(std::istream& is) {
+	int p = 3, r = 3;
 
+	Kind k = Kind::circle;
+
+	switch (k) {
+	case Kind::circle:
+		// read circle data into p and r
+		return std::unique_ptr<Shape>{ new Circle{ p, r } };
+		/*
+		case Kind::triangle:
+			// read triangle data
+			return std::unique_ptr<Shape>{new Triangle{ p1, p2, p3 }};
+		case Kind::smiley:
+			Smiley* ps = new Smiley{ p,r };
+			ps->add_eye(e1);
+			ps->add_eye(e2);
+			ps->set_mouth(m);
+			return std::unique_ptr<Shape>{ ps };
+		}
+		*/
+	}
+}
+
+void user() {
+	std::vector<std::unique_ptr<Shape>> v;
+	while (cin)
+		v.push_back(read_shape(cin));
+	/*
+	draw_all(v); // do various things w/ the pointers
+	*/
+}
 // you can use dynamic casting to have access to child classes values
 //	while still using the parent child's pointer
-void demonstrate_dynamic_caste() {
-	Shape* ps{ read_shape(cin) };
+void demonstrate_dynamic_cast() {
+	Shape* ps{ read_shape(std::cin) };
 
 	if (Smiley* p = dynamic_cast<Smiley*>(ps)) {
-		// create a pointer p that is of type smiley
+		// create a pointer p that is of type smiley 
 		// that can access the data in ps
 
 		// do something
 	}
 	else {
 		// if ps doesn't point to a Smiley object
-		// or derived from Smiley
+		// or one derived from Smiley
 		// the dynamic cast will return a nullptr
 		
 		// do this
 	}
 }
+// a dynamic cast can be used to check for a proper type
+// you dynamic cast to a reference type, and if it's not the expected
+//	type, you throw a bad_cast
+Shape* ps{ read_shape(std::cin) };
+Smiley& r{ dynamic_cast<Smiley&>(*ps) }; // somewhere, catch std::bad_cast
+// dynamic casts should be used sparingly to keep code clean
+// however, if you're using the base class interface to pass data,
+//	casts can be used to clarify what the intended returned data type should
+//	be
+// these operations are known as "is kind/instance of" operations
+
